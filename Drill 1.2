@@ -1,0 +1,30 @@
+The ID's and durations for all trips of duration greater than 500, ordered by duration.
+
+SELECT trip_id,duration FROM trips WHERE duration > 500 
+
+1000001	638
+1000006	570
+1000007	524
+1000016	541
+1000020	878
+1000023	642
+1000024	509
+1000025	610
+
+Every column of the stations table for station id 84.
+SELECT * FROM stations WHERE station_id = 84
+
+84	Ryland Park	37.342725	-121.89561699999999	15	San Jose	2014-04-09
+
+
+The min temperatures of all the occurrences of rain in zip 94301.
+
+SELECT  MinTemperatureF,  ZIP FROM weather WHERE ZIP = 94301
+55	94301
+57	94301
+59	94301
+55	94301
+66	94301
+50	94301
+50	94301
+55	94301
