@@ -1,0 +1,207 @@
+What are the three longest trips on rainy days?
+select w.date, w.events, t.duration from weather w  inner join trips t on w.date = date(t.start_date)
+where w.events = 'Rain' order by duration desc limit 3;
+
+2016-04-22	Rain	85900
+2016-04-22	Rain	85900
+2016-04-22	Rain	85900
+
+
+
+Which station is empty most often?
+select station_id, sum(docks_available) as No_Of_Docks_Available from status 
+group by station_id
+order by docks_available desc
+limit 1
+
+91	234569
+
+
+
+Return a list of stations with a count of number of trips starting at that station but ordered by dock count.
+Select start_station,  count(1)  as dock_count from trips
+group by start_station
+order by dock_count desc
+
+San Francisco Caltrain (Townsend at 4th)	23591
+San Francisco Caltrain 2 (330 Townsend)	22358
+Harry Bridges Plaza (Ferry Building)	16128
+2nd at Townsend	14099
+Steuart at Market	13693
+Embarcadero at Sansome	13424
+Temporary Transbay Terminal (Howard at Beale)	13111
+Townsend at 7th	11170
+Market at Sansome	10970
+Market at 10th	9937
+Embarcadero at Folsom	7820
+2nd at South Park	7722
+Embarcadero at Bryant	7714
+Howard at 2nd	7583
+2nd at Folsom	7464
+Beale at Market	7373
+Market at 4th	7337
+Powell Street BART	6826
+Grant Avenue at Columbus Avenue	6735
+Broadway St at Battery St	5695
+Mechanics Plaza (Market at Battery)	5613
+5th at Howard	5436
+South Van Ness at Market	5398
+Davis at Jackson	5240
+Spear at Folsom	5113
+Civic Center BART (7th at Market)	5043
+Commercial at Montgomery	4969
+Embarcadero at Vallejo	4710
+Powell at Post (Union Square)	4488
+Clay at Battery	4357
+Post at Kearny	4348
+San Jose Diridon Caltrain Station	4035
+Yerba Buena Center of the Arts (3rd @ Howard)	3460
+Golden Gate at Polk	3309
+Washington at Kearny	2844
+Mountain View Caltrain Station	2515
+San Francisco City Hall	2195
+Santa Clara at Almaden	1447
+Mountain View City Hall	1291
+San Pedro Square	1215
+Palo Alto Caltrain Station	1170
+Castro Street and El Camino Real	1014
+Japantown	945
+Ryland Park	879
+Paseo de San Antonio	833
+Adobe on Almaden	789
+Cowper at University	788
+Redwood City Caltrain Station	695
+St James Park	694
+MLK Library	630
+San Antonio Caltrain Station	611
+San Antonio Shopping Center	559
+Arena Green / SAP Center	547
+San Jose Civic Center	543
+San Salvador at 1st	540
+San Jose City Hall	518
+University and Emerson	490
+SJSU - San Salvador at 9th	481
+Stanford in Redwood City	428
+Santa Clara County Civic Center	420
+California Ave Caltrain Station	392
+SJSU 4th at San Carlos	363
+Charleston Park/ North Bayshore Area	343
+Park at Olive	276
+5th St at Folsom St	173
+Kaiser Hospital	147
+Mezes	119
+San Mateo County Center	86
+S. Market St at Park Ave	84
+Evelyn Park and Ride	71
+Cyril Magnin St at Ellis St	69
+Middlefield Light Rail Station	66
+Redwood City Public Library	59
+Rengstorff Avenue / California Street	42
+5th S at E. San Salvador St	19
+Sequoia Hospital	15
+Mezes Park	7
+Redwood City Medical Center	5
+Franklin at Maple	2
+5th St at E. San Salvador St	1
+
+
+(Challenge) What's the length of the longest trip for each day it rains anywhere?
+
+select  date(start_date) as start_date ,trip_id, max(duration) from trips 
+where date(start_date) in
+(select Date from weather where Events='Rain')
+group by date(start_date)
+;
+
+2015-09-02	915934	25917
+2015-09-13	928871	21695
+2015-09-16	933838	50241
+2015-09-30	951664	25667
+2015-10-01	953926	51081
+2015-10-15	971551	27467
+2015-10-16	973724	19073
+2015-10-19	976908	41555
+2015-10-27	986879	11107
+2015-11-01	993323	43899
+2015-11-02	994699	12246
+2015-11-08	1001772	7874
+2015-11-09	1002304	12838
+2015-11-10	1003919	61234
+2015-11-12	1007903	37799
+2015-11-15	1009870	84349
+2015-11-24	1020623	22478
+2015-11-25	1022304	3617
+2015-11-30	1024537	58759
+2015-12-03	1027566	16722
+2015-12-06	1030368	39450
+2015-12-10	1035361	8540
+2015-12-11	1035946	19186
+2015-12-13	1037571	57019
+2015-12-18	1043182	27880
+2015-12-19	1044308	33629
+2015-12-20	1044679	13739
+2015-12-21	1044929	18927
+2015-12-22	1045694	3999
+2015-12-24	1046892	8472
+2015-12-27	1047429	30361
+2015-12-28	1047596	7034
+2015-12-30	1049213	12416
+2016-01-03	1050442	61900
+2016-01-04	1050995	25318
+2016-01-05	1052063	5452
+2016-01-06	1052945	6401
+2016-01-07	1053524	28640
+2016-01-08	1054748	25855
+2016-01-09	1055952	11347
+2016-01-10	1056107	14749
+2016-01-11	1056771	26442
+2016-01-13	1059864	7866
+2016-01-14	1061184	76700
+2016-01-15	1062374	11580
+2016-01-16	1063180	14961
+2016-01-17	1063373	15935
+2016-01-18	1063695	38626
+2016-01-19	1064888	64444
+2016-01-22	1068614	62168
+2016-01-23	1068856	25977
+2016-01-28	1074958	44070
+2016-01-29	1076377	51243
+2016-01-30	1076714	14082
+2016-01-31	1076919	18996
+2016-02-01	1078430	50928
+2016-02-02	1079000	18517
+2016-02-03	1080535	9438
+2016-02-17	1095998	31017
+2016-02-18	1097568	9928
+2016-02-19	1099382	13743
+2016-03-03	1113746	29319
+2016-03-04	1115452	26338
+2016-03-05	1116074	1878
+2016-03-06	1116122	24693
+2016-03-07	1117726	41493
+2016-03-08	1118000	21212
+2016-03-09	1119955	7375
+2016-03-10	1121367	12285
+2016-03-11	1121884	24845
+2016-03-12	1122411	46320
+2016-03-13	1122635	3769
+2016-03-14	1124079	41092
+2016-03-20	1130838	36895
+2016-03-21	1131585	27357
+2016-03-22	1133211	67375
+2016-03-28	1140461	30027
+2016-04-08	1155176	78123
+2016-04-09	1155508	6220
+2016-04-10	1155638	43422
+2016-04-14	1162685	50495
+2016-04-21	1172051	14883
+2016-04-22	1173890	85900
+2016-04-27	1179132	6565
+2016-05-06	1191086	59642
+2016-05-07	1191610	82896
+2016-05-08	1191823	18632
+2016-05-09	1192768	28055
+2016-05-21	1210487	83915
+2016-06-14	1238750	25396
+2016-06-17	1244903	81687
+2016-07-18	1279973	52051
