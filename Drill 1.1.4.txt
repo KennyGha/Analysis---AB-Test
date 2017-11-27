@@ -1,0 +1,35 @@
+Drill: What can data science do?
+Estimated Time: 1-2 hours 
+________________________________________
+As we outlined in the previous section, a lot of data science work can be classified as translation: taking a question and translating it into mathematical or statistical tests or taking statistical results and translating them into something everyone can understand.
+Below we have a series of questions for you to translate into a technical plan. For each question, describe how you would make it testable and translate it from a general question into something statistically rigorous. Write your answers down in a shareable document and submit the link below. 
+1.	You work at an e-commerce company that sells three goods: widgets, doodads, and fizzbangs. The head of advertising asks you which they should feature in their new advertising campaign. You have data on individual visitors' sessions (activity on a website, pageviews, and purchases), as well as whether or not those users converted from an advertisement for that session. You also have the cost and price information for the goods.
+Depending on what goal the advertising campaign is. In general, company want to generate more profit from the advertising.
+Initially, the company may want to assign customer group by profit that customer contribute to the company. Then after then we should study each group the buying behavior , for example the shortest link that customer make an orders, advertising position, amount of order value , time of purchase.
+Later on, when user access the site, we can direct the customer to the prefer page where the advertising best fit to the customer group.
+----------------------------------------------------------------------------------------
+
+
+2.	You work at a web design company that offers to build websites for clients. Signups have slowed, and you are tasked with finding out why. The onboarding funnel has three steps: email and password signup, plan choice, and payment. On a user level you have information on what steps they have completed as well as timestamps for all of those events for the past 3 years. You also have information on marketing spend on a weekly level.
+Study which part of the funnel user has taken lots of time to completed is the primary   
+Process to do. Studying the interval for each part of funnel by    End – Start time of each funnel and group the result by median, mean. Then we can study which part of the funnel has taken too much time at the start point and then follow up the issue.
+
+----------------------------------------------------------------------------------------
+
+
+
+3.	You work at a hotel website and currently the website ranks search results by price. For simplicity's sake, let's say it's a website for one city with 100 hotels. You are tasked with proposing a better ranking system. You have session information, price information for the hotels, and whether each hotel is currently available.
+First filter out the non-available hotel as it is no sense to view it while it is not available,  then by
+Session information (if session include client personal information such as preferrence), then take client preference into account as second ranking, final it should be sort the price by highest price so that generate more profit
+
+----------------------------------------------------------------------------------------
+
+4.	You work at a social network, and the management is worried about churn (users stopping using the product). You are tasked with finding out if their churn is atypical. You have three years of data for users with an entry for every time they've logged in, including the timestamp and length of session.
+Finding out the reason may be hard but we can adopt the approach as below
+a.	Identify what atypical is , then follow this definition to perform analysis
+b.	Find out the last five activities by the churn user and count it the number to rank the reason
+c.	Analysis the duration by grouping it by monthly, weekly to see if there is any pattern to predict the behaviour
+Find the most 
+
+Discuss your answers to each of these questions with your mentor during your next session.
+
